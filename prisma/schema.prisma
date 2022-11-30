@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model job_category {
+  id              Int               @id @default(autoincrement())
+  name            String?           @db.VarChar(255)
+  job_subcategory job_subcategory[]
+  popular_service popular_service[]
+  related_service related_service[]
+}
+
+model job_subcategory {
+  id           Int           @id @default(autoincrement())
+  job_cat_id   Int?
+  name         String?       @db.VarChar(255)
+  img          String?       @db.VarChar(3000)
+  job_category job_category? @relation(fields: [job_cat_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_subcategory_ibfk_1")
+
+  @@index([job_cat_id], map: "job_cat_id")
+}
+
+model popular_service {
+  id           Int           @id @default(autoincrement())
+  job_cat_id   Int?
+  name         String?       @db.VarChar(255)
+  img          String?       @db.VarChar(3000)
+  job_category job_category? @relation(fields: [job_cat_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "popular_service_ibfk_1")
+
+  @@index([job_cat_id], map: "job_cat_id")
+}
+
+model related_service {
+  id           Int           @id @default(autoincrement())
+  job_cat_id   Int?
+  name         String?       @db.VarChar(255)
+  job_category job_category? @relation(fields: [job_cat_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "related_service_ibfk_1")
+
+  @@index([job_cat_id], map: "job_cat_id")
+}
