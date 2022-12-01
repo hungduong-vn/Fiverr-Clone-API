@@ -1,7 +1,11 @@
 const express = require("express");
-const { getAllJobCat } = require("../controllers/jobCatController");
+const {
+  getAllJobCats,
+  getJobCatNames,
+} = require("../controllers/jobCatController");
 const jobCatRoute = express.Router();
 
-jobCatRoute.get("/getAllJobCats", getAllJobCat);
+jobCatRoute.get("/getAllJobCats", getAllJobCats);
+jobCatRoute.get("/getJobCatNames", getJobCatNames);
 
 module.exports = jobCatRoute;
