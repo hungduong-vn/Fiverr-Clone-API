@@ -449,3 +449,386 @@ INSERT INTO related_service VALUES (0, 9, "Data Visualization Graphs");
 INSERT INTO related_service VALUES (0, 9, "Geographic Information Systems");
 INSERT INTO related_service VALUES (0, 9, "Oracle Apex");
 INSERT INTO related_service VALUES (0, 9, "Machine Learning");
+
+CREATE TABLE service (id INT PRIMARY KEY AUTO_INCREMENT, 
+	job_subcat_id INT, name VARCHAR(255), 
+	new BOOLEAN, 
+	FOREIGN KEY (job_subcat_id) REFERENCES job_subcategory(id));
+
+INSERT INTO service VALUES (0, 1, "Logo Design", false);
+INSERT INTO service VALUES (0, 1, "Brand Style Guides", true);
+INSERT INTO service VALUES (0, 1, "Fonts & Typography", false);
+INSERT INTO service VALUES (0, 1, "Business Cards & Stationery", true);
+
+INSERT INTO service VALUES (0, 2, "Website Design", false);
+INSERT INTO service VALUES (0, 2, "App Design", false);
+INSERT INTO service VALUES (0, 2, "UX Design", false);
+INSERT INTO service VALUES (0, 2, "Landing Page Design", false);
+INSERT INTO service VALUES (0, 2, "Icon Design", true);
+
+INSERT INTO service VALUES (0, 3, "Illustration", false);
+INSERT INTO service VALUES (0, 3, "NFT Art", true);
+INSERT INTO service VALUES (0, 3, "Pattern Design", false);
+INSERT INTO service VALUES (0, 3, "Portraits & Caricatures", false);
+INSERT INTO service VALUES (0, 3, "Cartoons & Comics", true);
+INSERT INTO service VALUES (0, 3, "Tattoo Design", true);
+INSERT INTO service VALUES (0, 3, "Storyboards", false);
+
+INSERT INTO service VALUES (0, 4, "Social Media Design", false);
+INSERT INTO service VALUES (0, 4, "Email Design", false);
+INSERT INTO service VALUES (0, 4, "Web Banners", false);
+INSERT INTO service VALUES (0, 4, "Signage Design", false);
+
+INSERT INTO service VALUES (0, 5, "Game Art", false);
+INSERT INTO service VALUES (0, 5, "Graphics for Streamers", false);
+INSERT INTO service VALUES (0, 5, "Twitch Store", true);
+
+INSERT INTO service VALUES (0, 6, "Image Editing", false);
+INSERT INTO service VALUES (0, 6, "Presentation Design", false);
+INSERT INTO service VALUES (0, 6, "Infographic Design", false);
+INSERT INTO service VALUES (0, 6, "Vector Tracing", false);
+INSERT INTO service VALUES (0, 6, "Resume Design", false);
+
+INSERT INTO service VALUES (0, 7, "T-Shirts & Merchandise", false);
+INSERT INTO service VALUES (0, 7, "Flyer Design", false);
+INSERT INTO service VALUES (0, 7, "Brochure Design", false);
+INSERT INTO service VALUES (0, 7, "Poster Design", false);
+INSERT INTO service VALUES (0, 7, "Catalog Design", false);
+INSERT INTO service VALUES (0, 7, "Menu Design", false);
+INSERT INTO service VALUES (0, 7, "Invitation Design", true);
+
+INSERT INTO service VALUES (0, 8, "Packaging & Label Design", false);
+INSERT INTO service VALUES (0, 8, "Book Design", false);
+INSERT INTO service VALUES (0, 8, "Album Cover Design", true);
+INSERT INTO service VALUES (0, 8, "Podcast Cover Art", false);
+INSERT INTO service VALUES (0, 8, "Car Wraps", true);
+
+INSERT INTO service VALUES (0, 9, "Architecture & Interior Design", false);
+INSERT INTO service VALUES (0, 9, "Landscape Design", false);
+INSERT INTO service VALUES (0, 9, "Building Engineering", false);
+INSERT INTO service VALUES (0, 9, "Building Information Modeling", false);
+
+INSERT INTO service VALUES (0, 10, "Industrial & Product Design", false);
+INSERT INTO service VALUES (0, 10, "Character Modeling", false);
+INSERT INTO service VALUES (0, 10, "Trade Booth Design", false);
+
+INSERT INTO service VALUES (0, 11, "Fashion Design", false);
+INSERT INTO service VALUES (0, 11, "Jewelry Design", false);
+
+INSERT INTO service VALUES (0, 12, "Logo Maker Tool", false);
+INSERT INTO service VALUES (0, 12, "Design Advice", false);
+INSERT INTO service VALUES (0, 12, "Other", false);
+
+INSERT INTO service VALUES (0, 13, "Search Engine Optimization (SEO)", false);
+INSERT INTO service VALUES (0, 13, "Local SEO", false);
+
+INSERT INTO service VALUES (0, 14, "Social Media Marketing", false);
+INSERT INTO service VALUES (0, 14, "Influencer Marketing", false);
+INSERT INTO service VALUES (0, 14, "Community Management", false);
+
+INSERT INTO service VALUES (0, 15, "Social Media Advertising", false);
+INSERT INTO service VALUES (0, 15, "Search Engine Marketing (SEM)", false);
+INSERT INTO service VALUES (0, 15, "Display Advertising", false);
+
+INSERT INTO service VALUES (0, 16, "Public Relations", false);
+INSERT INTO service VALUES (0, 16, "Guest Posting", false);
+INSERT INTO service VALUES (0, 16, "Video Marketing", false);
+INSERT INTO service VALUES (0, 16, "Email Marketing", false);
+INSERT INTO service VALUES (0, 16, "Text Message Marketing", false);
+INSERT INTO service VALUES (0, 16, "Affiliate Marketing", false);
+
+INSERT INTO service VALUES (0, 17, "E-Commerce Marketing", false);
+INSERT INTO service VALUES (0, 17, "Mobile App Marketing", false);
+INSERT INTO service VALUES (0, 17, "Book & eBook Marketing", false);
+INSERT INTO service VALUES (0, 17, "Music Promotion", false);
+INSERT INTO service VALUES (0, 17, "Podcast Marketing", false);
+INSERT INTO service VALUES (0, 17, "Crowdfunding", false);
+
+INSERT INTO service VALUES (0, 18, "Marketing Strategy", false);
+INSERT INTO service VALUES (0, 18, "Marketing Advice", true);
+INSERT INTO service VALUES (0, 18, "Web Analytics", false);
+
+INSERT INTO service VALUES (0, 19, "Articles & Blog Posts", false);
+INSERT INTO service VALUES (0, 19, "Proofreading & Editing", false);
+INSERT INTO service VALUES (0, 19, "Website Content", false);
+INSERT INTO service VALUES (0, 19, "UX Writing", false);
+INSERT INTO service VALUES (0, 19, "Book & eBook Writing", true);
+INSERT INTO service VALUES (0, 19, "Book Editing", true);
+INSERT INTO service VALUES (0, 19, "Creative Writing", false);
+INSERT INTO service VALUES (0, 19, "Beta Reading", false);
+INSERT INTO service VALUES (0, 19, "Technical Writing", false);
+
+INSERT INTO service VALUES (0, 20, "Resume Writing", false);
+INSERT INTO service VALUES (0, 20, "Cover Letters", false);
+INSERT INTO service VALUES (0, 20, "LinkedIn Profiles", true);
+
+INSERT INTO service VALUES (0, 21, "Speechwriting", false);
+INSERT INTO service VALUES (0, 21, "Scriptwriting", false);
+INSERT INTO service VALUES (0, 21, "Podcast Writing", false);
+
+INSERT INTO service VALUES (0, 22, "Brand Voice & Tone", false);
+INSERT INTO service VALUES (0, 22, "Business Names & Slogans", false);
+INSERT INTO service VALUES (0, 22, "Case Studies", false);
+INSERT INTO service VALUES (0, 22, "White Papers", false);
+INSERT INTO service VALUES (0, 22, "Grant Writing", false);
+INSERT INTO service VALUES (0, 22, "Product Descriptions", false);
+INSERT INTO service VALUES (0, 22, "Job Descriptions", true);
+
+
+INSERT INTO service VALUES (0, 23, "Translation", false);
+INSERT INTO service VALUES (0, 23, "Transcription", false);
+
+INSERT INTO service VALUES (0, 24, "Ad Copy", true);
+INSERT INTO service VALUES (0, 24, "Email Copy", false);
+INSERT INTO service VALUES (0, 24, "Sales Copy", false);
+INSERT INTO service VALUES (0, 24, "Social Media Copy", false);
+INSERT INTO service VALUES (0, 24, "Press Releases", false);
+
+INSERT INTO service VALUES (0, 25, "eLearning Content Development", true);
+INSERT INTO service VALUES (0, 25, "Research & Summaries", false);
+INSERT INTO service VALUES (0, 25, "Writing Advice", true);
+INSERT INTO service VALUES (0, 25, "Other", false);
+
+INSERT INTO service VALUES (0, 26, "Video Editing", false);
+INSERT INTO service VALUES (0, 26, "Visual Effects", false);
+INSERT INTO service VALUES (0, 26, "Intro & Outro Videos", false);
+INSERT INTO service VALUES (0, 26, "Video Templates Editing", false);
+INSERT INTO service VALUES (0, 26, "Subtitles & Captions", false);
+
+INSERT INTO service VALUES (0, 27, "Character Animation", false);
+INSERT INTO service VALUES (0, 27, "Whiteboard & Animated Explainers", false);
+INSERT INTO service VALUES (0, 27, "Logo Animation", false);
+INSERT INTO service VALUES (0, 27, "Animated GIFs", false);
+INSERT INTO service VALUES (0, 27, "Lottie & Web Animation", false);
+INSERT INTO service VALUES (0, 27, "NFT Animation", false);
+INSERT INTO service VALUES (0, 27, "Animation for Streamers", false);
+INSERT INTO service VALUES (0, 27, "Animation for Kids", false);
+
+
+INSERT INTO service VALUES (0, 28, "Video Ads & Commercials", false);
+INSERT INTO service VALUES (0, 28, "Social Media Videos", true);
+INSERT INTO service VALUES (0, 28, "Spokesperson Videos", false);
+INSERT INTO service VALUES (0, 28, "Music Videos", false);
+INSERT INTO service VALUES (0, 28, "Slideshow Videos", false);
+INSERT INTO service VALUES (0, 28, "Corporate Videos", false);
+INSERT INTO service VALUES (0, 28, "Meditation Videos", false);
+INSERT INTO service VALUES (0, 28, "Real Estate Promos", false);
+
+
+INSERT INTO service VALUES (0, 29, "3D Product Animation", false);
+INSERT INTO service VALUES (0, 29, "E-Commerce Product Videos", false);
+INSERT INTO service VALUES (0, 29, "Live Action Explainers", false);
+INSERT INTO service VALUES (0, 29, "App & Website Previews", false);
+INSERT INTO service VALUES (0, 29, "Unboxing Videos", false);
+INSERT INTO service VALUES (0, 29, "Crowdfunding Videos", false);
+INSERT INTO service VALUES (0, 29, "Book Trailers", false);
+INSERT INTO service VALUES (0, 29, "Game Trailers", false);
+
+
+INSERT INTO service VALUES (0, 30, "eLearning Video Production", false);
+INSERT INTO service VALUES (0, 30, "Screencasting Videos", false);
+INSERT INTO service VALUES (0, 30, "Video Advice", true);
+
+
+INSERT INTO service VALUES (0, 31, "Article to Video", false);
+INSERT INTO service VALUES (0, 31, "Videographers", true);
+INSERT INTO service VALUES (0, 31, "Filmed Video Production", true);
+INSERT INTO service VALUES (0, 31, "Other", false);
+
+
+INSERT INTO service VALUES (0, 32, "Producers & Composers", false);
+INSERT INTO service VALUES (0, 32, "Songwriters", false);
+INSERT INTO service VALUES (0, 32, "Beat Making", false);
+INSERT INTO service VALUES (0, 32, "Singers & Vocalists", false);
+INSERT INTO service VALUES (0, 32, "Session Musicians", false);
+INSERT INTO service VALUES (0, 32, "Jingles & Intros", false);
+
+
+INSERT INTO service VALUES (0, 33, "Mixing & Mastering", false);
+INSERT INTO service VALUES (0, 33, "Audio Editing", false);
+INSERT INTO service VALUES (0, 33, "Vocal Tuning", false);
+INSERT INTO service VALUES (0, 33, "Audio Logo & Sonic Branding", false);
+
+
+INSERT INTO service VALUES (0, 34, "Voice Over", false);
+INSERT INTO service VALUES (0, 34, "Podcast Production", false);
+INSERT INTO service VALUES (0, 34, "Audiobook Production", false);
+INSERT INTO service VALUES (0, 34, "Audio Ads Production", false);
+
+
+INSERT INTO service VALUES (0, 35, "Online Music Lessons", false);
+INSERT INTO service VALUES (0, 35, "Music Transcription", false);
+INSERT INTO service VALUES (0, 35, "Music & Audio Advice", true);
+
+
+INSERT INTO service VALUES (0, 36, "Remixing & Mashups", false);
+INSERT INTO service VALUES (0, 36, "DJ Drops & Tags", false);
+INSERT INTO service VALUES (0, 36, "DJ Mixing", false);
+
+
+INSERT INTO service VALUES (0, 37, "Sound Design", false);
+INSERT INTO service VALUES (0, 37, "Synth Presets", false);
+INSERT INTO service VALUES (0, 37, "Meditation Music", false);
+
+
+INSERT INTO service VALUES (0, 38, "Website Development", true);
+INSERT INTO service VALUES (0, 38, "Website Maintenance", true);
+INSERT INTO service VALUES (0, 38, "E-Commerce Development", false);
+INSERT INTO service VALUES (0, 38, "Custom Websites", true);
+INSERT INTO service VALUES (0, 38, "NFT Websites", false);
+
+
+INSERT INTO service VALUES (0, 39, "WordPress", false);
+INSERT INTO service VALUES (0, 39, "Wix", false);
+INSERT INTO service VALUES (0, 39, "Webflow", false);
+INSERT INTO service VALUES (0, 39, "Squarespace", false);
+INSERT INTO service VALUES (0, 39, "GoDaddy", false);
+
+
+INSERT INTO service VALUES (0, 40, "Mobile Apps", false);
+INSERT INTO service VALUES (0, 40, "Web Programming", false);
+INSERT INTO service VALUES (0, 40, "Desktop Applications", false);
+INSERT INTO service VALUES (0, 40, "Game Development", false);
+INSERT INTO service VALUES (0, 40, "Chatbots", false);
+INSERT INTO service VALUES (0, 40, "Blockchain & Cryptocurrency", false);
+INSERT INTO service VALUES (0, 40, "NFT Development", false);
+
+
+INSERT INTO service VALUES (0, 41, "Support & IT", false);
+INSERT INTO service VALUES (0, 41, "DevOps & Cloud", true);
+INSERT INTO service VALUES (0, 41, "Cybersecurity & Data Protection", false);
+INSERT INTO service VALUES (0, 41, "Development for Streamers", false);
+INSERT INTO service VALUES (0, 41, "Convert Files", false);
+
+
+INSERT INTO service VALUES (0, 42, "Electronics Engineering", false);
+INSERT INTO service VALUES (0, 42, "QA & Review", false);
+INSERT INTO service VALUES (0, 42, "User Testing", false);
+INSERT INTO service VALUES (0, 42, "Online Coding Lessons", false);
+INSERT INTO service VALUES (0, 42, "Other", false);
+
+
+INSERT INTO service VALUES (0, 43, "Business Plans", false);
+INSERT INTO service VALUES (0, 43, "Business Consulting", false);
+INSERT INTO service VALUES (0, 43, "Market Research", false);
+INSERT INTO service VALUES (0, 43, "Presentations", false);
+
+
+INSERT INTO service VALUES (0, 44, "Virtual Assistant", false);
+INSERT INTO service VALUES (0, 44, "E-Commerce Management", false);
+INSERT INTO service VALUES (0, 44, "Financial Consulting", false);
+INSERT INTO service VALUES (0, 44, "Legal Consulting", false);
+INSERT INTO service VALUES (0, 44, "HR Consulting", false);
+INSERT INTO service VALUES (0, 44, "Project Management", false);
+INSERT INTO service VALUES (0, 44, "Supply Chain Management", false);
+INSERT INTO service VALUES (0, 44, "ERP Management", true);
+INSERT INTO service VALUES (0, 44, "Event Management", true);
+
+
+INSERT INTO service VALUES (0, 45, "Sales", false);
+INSERT INTO service VALUES (0, 45, "Customer Care", false);
+INSERT INTO service VALUES (0, 45, "CRM Management ", true);
+
+INSERT INTO service VALUES (0, 46, "Game Concept Design", false);
+INSERT INTO service VALUES (0, 46, "Career Counseling", false);
+INSERT INTO service VALUES (0, 46, "Other", false);
+
+
+INSERT INTO service VALUES (0, 47, "Online Tutoring", false);
+INSERT INTO service VALUES (0, 47, "Astrology & Psychics", false);
+INSERT INTO service VALUES (0, 47, "Life Coaching", false);
+INSERT INTO service VALUES (0, 47, "Personal Stylists", false);
+
+INSERT INTO service VALUES (0, 48, "Arts & Crafts", false);
+INSERT INTO service VALUES (0, 48, "Puzzle & Game Creation", true);
+INSERT INTO service VALUES (0, 48, "Traveling", false);
+INSERT INTO service VALUES (0, 48, "Collectibles", false);
+INSERT INTO service VALUES (0, 48, "Family & Genealogy", false);
+INSERT INTO service VALUES (0, 48, "Dance Lessons", false);
+
+INSERT INTO service VALUES (0, 49, "Fitness Lessons", false);
+INSERT INTO service VALUES (0, 49, "Wellness", false);
+INSERT INTO service VALUES (0, 49, "Cooking Lessons", false);
+
+INSERT INTO service VALUES (0, 50, "Gaming", false);
+INSERT INTO service VALUES (0, 50, "Game Coaching", false);
+
+INSERT INTO service VALUES (0, 51, "Modeling & Acting", false);
+INSERT INTO service VALUES (0, 51, "Greeting Cards & Videos", false);
+
+
+INSERT INTO service VALUES (0, 52, "Data Entry", false);
+INSERT INTO service VALUES (0, 52, "Data Processing", false);
+INSERT INTO service VALUES (0, 52, "Data Engineering", true);
+
+INSERT INTO service VALUES (0, 53, "Databases", false);
+
+INSERT INTO service VALUES (0, 54, "Data Analytics", false);
+INSERT INTO service VALUES (0, 54, "Data Visualization", false);
+INSERT INTO service VALUES (0, 54, "Data Science", true);
+
+INSERT INTO service VALUES (0, 55, "Other", false);
+
+CREATE TABLE job_cat_banner (id INT PRIMARY KEY AUTO_INCREMENT, 
+	job_cat_id INT,
+	mobile_img VARCHAR(3000), 
+	desktop_img VARCHAR(3000), 
+	bg_color VARCHAR(255),
+	descrition VARCHAR(255),
+	FOREIGN KEY (job_cat_id) REFERENCES job_category(id)
+);
+
+INSERT INTO job_cat_banner VALUES(0, 1, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415227/graphics-design-mobile.png",
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415203/graphics-design-desktop.png", 
+"rgb(11,58,35)",
+"Designs to make you stand out."
+);
+INSERT INTO job_cat_banner VALUES(0, 2, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415224/digital-marketing-mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415207/digital-marketing-desktop.png",
+"rgb(190,82,114)",
+"Build your brand. Grow your business."
+);
+INSERT INTO job_cat_banner VALUES(0, 3, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/42593ecc6f1e40fd735892b99f001ea4-1631622804535/writing%20_%20translation%20mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/42593ecc6f1e40fd735892b99f001ea4-1631622804534/writing%20_%20translation.png",
+"rgb(37,66,0)",
+"Get your words across—in any language."
+);
+INSERT INTO job_cat_banner VALUES(0, 4, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/569b8839e6ed3fd68051b3e4e230b061-1631622638078/Video%20_%20Animation%20mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/0f6552319e77504dc5f59479b7ad83f1-1631622668242/Video%20_%20Animation.png",
+"rgb(77,23,39)",
+"Bring your story to life with creative videos."
+);
+INSERT INTO job_cat_banner VALUES(0, 5, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415212/music-audio-mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415210/music-audio-desktop.png",
+"rgb(77,23,39)",
+"Don't miss a beat. Bring your sound to life."
+);
+INSERT INTO job_cat_banner VALUES(0, 6, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415219/programming-tech-mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415213/programming-tech-desktop.png",
+"rgb(47,13,5)",
+"You think it. A programmer develops it."
+);
+INSERT INTO job_cat_banner VALUES(0, 7, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/dfda78b6f6a73b6a9994070c056c0271-1631623279968/Business%20mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/dfda78b6f6a73b6a9994070c056c0271-1631623279971/Business.png",
+"rgb(104,114,1)",
+"Take your business to the next level."
+);
+INSERT INTO job_cat_banner VALUES(0, 8, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/9a9549b2f566b136fc15be5a34c49edd-1631623052336/Lifestyle%20mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/9a9549b2f566b136fc15be5a34c49edd-1631623052332/Lifestyle.png",
+"rgb(143,42,0)",
+"Your life. Your style. Find the balance."
+);
+INSERT INTO job_cat_banner VALUES(0, 9, 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/f9d5a328494bd9d9b9cdc2db25278c64-1631623172020/Data%20mobile.png", 
+"https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/f9d5a328494bd9d9b9cdc2db25278c64-1631623172022/Data.png",
+"rgb(1,57,18)",
+"Analyze and grow with data-powered insights."
+);
