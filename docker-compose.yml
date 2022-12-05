@@ -13,7 +13,7 @@ services:
     volumes:
       - mysql_db:/var/lib/mysql
     networks:
-      - node-network
+      - letsencrypt
   fiverr_be:
     depends_on:
       - mysql_db
@@ -22,16 +22,22 @@ services:
     env_file: .env
     environment:
       - DATABASE_URL=$DB_URL_DOCKER
+      - VIRTUAL_PORT=8080
+      - VIRTUAL_HOST=saltair.site
+      - LETSENCRYPT_HOST=saltair.site
+      - LETSENCRYPT_EMAIL=duongngochung13@gmail.com
     ports:
       - "3030:8080"
     networks:
-      - node-network
+      - letsencrypt
 
 volumes:
   mysql_db:
     driver: local
 
 networks:
-  node-network:
+  default:
+    external:
+      name: letsencrypt
   
 
