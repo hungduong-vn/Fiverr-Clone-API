@@ -1,8 +1,18 @@
 const express = require("express");
 const rootRoute = require("./routes");
 const app = express();
-const PORT = 8080 ;
+const PORT = 8080;
 const cors = require("cors");
+// const fs = require("fs");
+
+// const https = require("https");
+
+// const httpsOptions = {
+//   cert: fs.readFileSync("/etc/letsencrypt/live/saltair.site/fullchain.pem"),
+//   key: fs.readFileSync("/etc/letsencrypt/live/saltair.site/privkey.pem"),
+// };
+
+// https.createServer(httpsOptions, app).listen(PORT);
 
 app.use(express.json());
 app.use(express.static("."));
@@ -16,13 +26,3 @@ app.get("/test", (req, res) => {
 });
 
 app.use("/api", rootRoute);
-
-
-const https = require('https');
-
-const httpsOptions = {
-        cert: fs.readFileSync("/etc/letsencrypt/live/saltair.site/fullchain.pem"),
-        key: fs.readFileSync("/etc/letsencrypt/live/saltair.site/privkey.pem")
-}
-
-https.createServer(httpsOptions, app).listen(PORT);
