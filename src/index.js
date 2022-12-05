@@ -25,4 +25,8 @@ app.get("/test", (req, res) => {
   res.send("HELLO GUYS!");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/view/index.html");
+});
+
 app.use("/api", rootRoute);
