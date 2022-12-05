@@ -22,12 +22,12 @@ services:
     env_file: .env
     environment:
       - DATABASE_URL=$DB_URL_DOCKER
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=80
       - VIRTUAL_HOST=saltair.site
       - LETSENCRYPT_HOST=saltair.site
       - LETSENCRYPT_EMAIL=duongngochung13@gmail.com
     ports:
-      - "3030:8080"
+      - "3030:80"
     networks:
       - node-network
 
