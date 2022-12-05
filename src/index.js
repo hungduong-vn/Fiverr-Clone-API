@@ -16,3 +16,13 @@ app.get("/test", (req, res) => {
 });
 
 app.use("/api", rootRoute);
+
+
+const https = require('https');
+
+const httpsOptions = {
+        cert: fs.readFileSync("/etc/letsencrypt/live/saltair.site/fullchain.pem"),
+        key: fs.readFileSync("/etc/letsencrypt/live/saltair.site/privkey.pem")
+}
+
+https.createServer(httpsOptions, app).listen(PORT);
