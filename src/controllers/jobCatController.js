@@ -1,18 +1,26 @@
 const { successCode, failCode, errorCode } = require("../utils/responseCode");
+const { job_subcategory } = require("./index");
 const prisma = require("./index");
 
-const getAllJobCats = async (req, res) => {
+const getJobCatsMenu = async (req, res) => {
   try {
-    // let data = await prisma.job_subcategory.findMany();
-    let job_subcat_list = await prisma.job_category.findMany({
+    let data = await prisma.job_category.findMany({
       include: {
         job_subcategory: {
-          select: { id: true, name: true, img: true },
+          include: { service: true },
         },
       },
     });
-    let data = job_subcat_list;
-    successCode(res, data, "JobCategory successfully fetched!");
+    const result = data.map(({ job_subcategory, ..._ }) => {
+      return {
+        id: _.id,
+        name: _.name,
+        job_subcategories: job_subcategory.map(
+          ({ job_cat_id, img, ...rest }) => rest
+        ),
+      };
+    });
+    successCode(res, result, "JobCategory successfully fetched!");
   } catch (error) {
     errorCode(res, "Failed!");
   }
@@ -23,6 +31,7 @@ const getJobCatNames = async (req, res) => {
     let data = await prisma.job_category.findMany();
     successCode(res, data, "JobCategory names successfully fetched!");
   } catch (error) {
+    console.log(error);
     errorCode(res, "Failed!");
   }
 };
@@ -32,6 +41,7 @@ const getJobCatBanners = async (req, res) => {
     let data = await prisma.job_cat_banner.findMany();
     successCode(res, data, "JobCategoryBanners successfully fetched!");
   } catch (error) {
+    console.log(error);
     errorCode(res, "Failed!");
   }
 };
@@ -47,7 +57,8 @@ const getJobCatBannerById = async (req, res) => {
       data,
       `Banner for JobCategory ${id} is successfully fetched!`
     );
-  } catch (erro) {
+  } catch (error) {
+    console.log(error);
     errorCode(res, "Failed!");
   }
 };
@@ -66,12 +77,13 @@ const getJobCatRenderDataById = async (req, res) => {
     const message = `Render data for JobCategory ${data.name} successfully fetched!`;
     successCode(res, data, message);
   } catch (error) {
-    errorCode(res, error);
+    console.log(error);
+    errorCode(res, "Failed");
   }
 };
 
 module.exports = {
-  getAllJobCats,
+  getJobCatsMenu,
   getJobCatNames,
   getJobCatBanners,
   getJobCatBannerById,

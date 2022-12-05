@@ -5,6 +5,6 @@ const jobCatRoute = require("./jobCatRoute");
 const serviceRoute = require("./serviceRoute");
 
 rootRoute.use("/jobCategory", jobCatRoute);
-rootRoute.use("/service/", serviceRoute);
+rootRoute.use("/service", serviceRoute);
 
 module.exports = rootRoute;

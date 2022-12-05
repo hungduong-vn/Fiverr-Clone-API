@@ -20,7 +20,7 @@ const getServicesByJobSubCatId = async (req, res) => {
     const services = data.service.map(
       ({ job_subcat_id, ...service }) => service
     );
-    console.log({ services });
+    // console.log({ services });
     const result = {
       job_subcat_id: data.id,
       job_subcat_name: data.name,
