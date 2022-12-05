@@ -22,6 +22,7 @@ const getJobCatsMenu = async (req, res) => {
     });
     successCode(res, result, "JobCategory successfully fetched!");
   } catch (error) {
+    console.log(error);
     errorCode(res, "Failed!");
   }
 };
