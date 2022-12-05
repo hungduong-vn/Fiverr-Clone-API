@@ -1,7 +1,7 @@
 const express = require("express");
 const rootRoute = require("./routes");
 const app = express();
-const PORT = 80;
+const PORT = 8080;
 const cors = require("cors");
 // const fs = require("fs");
 
