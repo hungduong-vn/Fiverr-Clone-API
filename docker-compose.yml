@@ -13,7 +13,7 @@ services:
     volumes:
       - mysql_db:/var/lib/mysql
     networks:
-      - letsencrypt
+      - node-network
   fiverr_be:
     depends_on:
       - mysql_db
@@ -29,15 +29,13 @@ services:
     ports:
       - "3030:8080"
     networks:
-      - letsencrypt
+      - node-network
 
 volumes:
   mysql_db:
     driver: local
 
 networks:
-  default:
-    external:
-      name: letsencrypt
+  node-network:
   
 
