@@ -18,6 +18,7 @@ services:
     depends_on:
       - mysql_db
     build: .
+    # image: hungduong2k/fiverr_api
     container_name: fiverr_be
     env_file: .env
     environment:
