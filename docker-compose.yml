@@ -24,11 +24,9 @@ services:
     environment:
       - DATABASE_URL=$DB_URL_DOCKER
       - VIRTUAL_PORT=8080
-      - VIRTUAL_HOST=saltair.site
-      - LETSENCRYPT_HOST=saltair.site
-      - LETSENCRYPT_EMAIL=duongngochung13@gmail.com
     ports:
-      - "3030:8080"
+      # machinePort:appPort
+      - "8080:8080"
     networks:
       - node-network
 
@@ -39,4 +37,3 @@ volumes:
 networks:
   node-network:
   
-
