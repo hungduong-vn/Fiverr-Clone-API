@@ -1,29 +1,35 @@
-CREATE TABLE job_category(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255));
-INSERT INTO job_category (`name`)
-		VALUES('Graphics & Design');
-INSERT INTO job_category (`name`)
-		VALUES('Digital Marketing');
-INSERT INTO job_category (`name`)
-		VALUES('Writing & Translation');
-INSERT INTO job_category (`name`)
-		VALUES('Video & Animation');
-INSERT INTO job_category (`name`)
-		VALUES('Music & Audio');
-INSERT INTO job_category (`name`)
-		VALUES('Programming & Tech');
-INSERT INTO job_category (`name`)
-		VALUES('Business');
-INSERT INTO job_category (`name`)
-		VALUES('Lifestyle');
-INSERT INTO job_category (`name`)
-		VALUES('Data');
+-- DROP TABLE job_cat_banner;
+-- DROP TABLE popular_service;
+-- DROP TABLE related_service;
+-- DROP TABLE service;
+-- DROP TABLE job_subcategory;
+-- DROP TABLE job_category;
+CREATE TABLE job_category(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), iconUrl VARCHAR(3000));
+INSERT INTO job_category
+		VALUES(0, 'Graphics & Design', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg");
+INSERT INTO job_category
+		VALUES(0, 'Digital Marketing', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg");
+INSERT INTO job_category
+		VALUES(0, 'Writing & Translation', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg");
+INSERT INTO job_category
+		VALUES(0, 'Video & Animation', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg");
+INSERT INTO job_category
+		VALUES(0, 'Music & Audio', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg");
+INSERT INTO job_category
+		VALUES(0, 'Programming & Tech', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg");
+INSERT INTO job_category
+		VALUES(0, 'Business', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg");
+INSERT INTO job_category
+		VALUES(0, 'Lifestyle', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg");
+INSERT INTO job_category
+		VALUES(0, 'Data', "https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg");
 
 CREATE TABLE job_subcategory (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	job_cat_id INT,
 	name VARCHAR(255),
 	img VARCHAR(3000),
-	FOREIGN KEY (job_cat_id) REFERENCES job_category (id))
+	FOREIGN KEY (job_cat_id) REFERENCES job_category (id));
 INSERT INTO job_subcategory
 		VALUES(
 			0, 1, "Logo & Brand Identity", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004536/Logo%20_%20Brand%20Identity_B_2x.png")
@@ -189,7 +195,6 @@ INSERT INTO job_subcategory
 	INSERT INTO job_subcategory
 		VALUES(
 			0, 9, "Miscellaneous", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/f9d5a328494bd9d9b9cdc2db25278c64-1631623172001/Miscellaneous.png");
-DROP TABLE popular_service;
 CREATE TABLE popular_service (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	job_cat_id INT,
@@ -279,7 +284,6 @@ INSERT INTO popular_service VALUES (0, 9, "Dashboards", "https://fiverr-res.clou
 INSERT INTO popular_service VALUES (0, 9, "Text Analysis & NLP", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/e099d489c1f140e60bed23c68645aa07-1630333713989/Text%20Analysis%20_%20NLP.png");
 INSERT INTO popular_service VALUES (0, 9, "Database Design", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/e099d489c1f140e60bed23c68645aa07-1630333714004/Databases.png");
 INSERT INTO popular_service VALUES (0, 9, "Data Entry", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/e099d489c1f140e60bed23c68645aa07-1630333713985/Data%20Typing.png");
-DROP TABLE related_service;
 CREATE TABLE related_service (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	job_cat_id INT,

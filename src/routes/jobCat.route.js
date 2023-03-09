@@ -5,10 +5,12 @@ const {
   getJobCatBanners,
   getJobCatBannerById,
   getJobCatRenderDataById,
-} = require("../controllers/jobCatController");
+  getJobCats,
+} = require("../controllers/jobCat.controller");
 const jobCatRoute = express.Router();
 
 jobCatRoute.get("/get-job-categories-menu", getJobCatsMenu);
+jobCatRoute.get("/get-job-categories", getJobCats);
 jobCatRoute.get("/get-job-categories-names", getJobCatNames);
 jobCatRoute.get("/get-banners", getJobCatBanners);
 jobCatRoute.get("/get-banners/:id", getJobCatBannerById);
