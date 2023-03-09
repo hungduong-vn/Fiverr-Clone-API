@@ -3,7 +3,7 @@ const {
   getServices,
   getServicesByJobSubCatId,
   getServicesByJobCatId,
-} = require("../controllers/serviceController");
+} = require("../controllers/service.controller");
 
 const serviceRoute = express.Router();
 serviceRoute.get("/get-services", getServices);

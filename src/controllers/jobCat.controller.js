@@ -2,6 +2,16 @@ const { successCode, failCode, errorCode } = require("../utils/responseCode");
 const { job_subcategory } = require("./index");
 const prisma = require("./index");
 
+const getJobCats = async (req, res) => {
+  try {
+    let data = await prisma.job_category.findMany();
+    successCode(res, data, "JobCategories successfully fetched!");
+  } catch (error) {
+    console.log(error);
+    errorCode(res, "Failed to get Job Categories");
+  }
+};
+
 const getJobCatsMenu = async (req, res) => {
   try {
     let data = await prisma.job_category.findMany({
@@ -20,7 +30,11 @@ const getJobCatsMenu = async (req, res) => {
         ),
       };
     });
-    successCode(res, result, "JobCategory successfully fetched!");
+    successCode(
+      res,
+      result,
+      "JobCategory & JobSubcagtegories successfully fetched!"
+    );
   } catch (error) {
     console.log(error);
     errorCode(res, "Failed!");
@@ -84,6 +98,7 @@ const getJobCatRenderDataById = async (req, res) => {
 };
 
 module.exports = {
+  getJobCats,
   getJobCatsMenu,
   getJobCatNames,
   getJobCatBanners,
