@@ -71,31 +71,48 @@ model service {
 }
 
 model job {
-  id                Int      @id @default(autoincrement())
+  id                Int         @id @default(autoincrement())
   user_id           Int?
   service_id        Int?
-  name              String?  @db.VarChar(255)
+  name              String?     @db.VarChar(255)
   price             Int?
-  thumb_url         String?  @db.VarChar(3000)
-  long_description  String?  @db.Text
-  short_description String?  @db.Text
+  thumb_url         String?     @db.VarChar(3000)
+  long_description  String?     @db.Text
+  short_description String?     @db.Text
   rating            Int?
-  user              user?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_1")
-  service           service? @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_2")
+  user              user?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_1")
+  service           service?    @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_2")
+  loved_job         loved_job[]
 
   @@index([service_id], map: "service_id")
   @@index([user_id], map: "user_id")
 }
 
 model user {
-  id          Int       @id @default(autoincrement())
-  name        String?   @db.VarChar(255)
-  email       String?   @unique(map: "email") @db.VarChar(255)
-  password    String?   @db.VarChar(255)
-  birthday    DateTime? @db.Date
-  nationality String?   @db.VarChar(255)
-  created_at  DateTime? @default(now()) @db.Timestamp(0)
-  avatar      String?   @db.VarChar(3000)
-  role        String?   @db.VarChar(255)
-  job         job[]
+  id           Int         @id @default(autoincrement())
+  name         String?     @db.VarChar(255)
+  display_name String?     @db.VarChar(255)
+  email        String?     @db.VarChar(255)
+  password     String?     @db.VarChar(255)
+  birthday     DateTime?   @db.Date
+  nationality  String?     @db.VarChar(255)
+  gender       Boolean?
+  created_at   DateTime?   @default(now()) @db.Timestamp(0)
+  avatar       String?     @db.VarChar(3000)
+  role         String?     @db.VarChar(255)
+  job          job[]
+  loved_job    loved_job[]
+
+  @@unique([email, name], map: "UC_User")
+}
+
+model loved_job {
+  job_id     Int
+  user_id    Int
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  user       user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "loved_job_ibfk_1")
+  job        job       @relation(fields: [job_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "loved_job_ibfk_2")
+
+  @@id([user_id, job_id])
+  @@index([job_id], map: "job_id")
 }

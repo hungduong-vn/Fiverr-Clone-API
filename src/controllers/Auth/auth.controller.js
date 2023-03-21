@@ -11,18 +11,22 @@ const {
 } = require("../../utils/token");
 
 async function signIn(req, res) {
-  const { email, password } = req.body;
+  const { email, name, password } = req.body;
+  const identifierKey = email ? "email" : "name";
+  const identifierValue = email || name;
   try {
-    let data = await prisma.user.findUnique({ where: { email } });
+    let data = await prisma.user.findFirst({
+      where: { [identifierKey]: identifierValue },
+    });
     console.log(data);
     if (!data) {
-      failCode(res, data, `Email doesn't exist!`);
+      failCode(res, data, `${identifierKey} doesn't exist!`);
       return;
     }
     if (!compareEncrypted(password, data.password)) {
       failCode(res, null, `Wrong password`);
     } else {
-      const token = generateToken(data);
+      const token = generateToken({ id: data.id, name: data.name });
       data = { ...data, accessToken: token };
       delete data.password;
       successCode(res, data, `Successfully signed in!`);
@@ -34,21 +38,19 @@ async function signIn(req, res) {
 }
 
 async function signUp(req, res) {
-  const { email, ...userInfo } = req.body;
+  const { ...userInfo } = req.body;
   try {
-    let existedEmail = await prisma.user.findUnique({ where: { email } });
-    if (existedEmail) {
-      failCode(res, null, "Email already registered");
-    }
     const encryptedPassword = encryptString(userInfo.password);
     const newUser = {
-      email,
       ...userInfo,
       password: encryptedPassword,
+      gender: !!userInfo.gender,
       birthday: new Date(userInfo.birthday),
     };
-    const data = await prisma.user.create({ data: { ...newUser } });
+    let data = await prisma.user.create({ data: { ...newUser } });
     delete data.password;
+    const token = generateToken(data);
+    data = { ...data, accessToken: token };
     successCode(res, data, "Signed up successfully!");
   } catch (error) {
     console.log(error);

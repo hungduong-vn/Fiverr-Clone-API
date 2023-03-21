@@ -1,15 +1,18 @@
 CREATE TABLE user (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(255),
+  display_name VARCHAR(255),
 	email VARCHAR(255),
   	password VARCHAR(255),
 	birthday DATE,
 	nationality VARCHAR(255),
+  gender BOOLEAN,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   	avatar VARCHAR(3000),
   	role VARCHAR(255),
-	UNIQUE (email));
-INSERT INTO user VALUES (0, "J Duong", "jduong@gmail.com", "$2a$10$z/.XUYhZn988kWDeLq59COun6W.tisyTKtLY693nzcVhzok.08Kei", "2000-12-03", "Vietnam", CURRENT_TIMESTAMP, "https://i.pravatar.cc/300?img=3", "admin");
+	CONSTRAINT UC_User UNIQUE (email, name));
+INSERT INTO user VALUES (0, "j_duong", "J Duong","jduong@gmail.com", "$2a$10$z/.XUYhZn988kWDeLq59COun6W.tisyTKtLY693nzcVhzok.08Kei", "2000-12-03", "Vietnam", 0,CURRENT_TIMESTAMP, "https://i.pravatar.cc/300?img=3", "admin");
+INSERT INTO user VALUES (1, "admin", "Admin","fiverr_admin@jopmail.com", "$2a$10$z/.XUYhZn988kWDeLq59COun6W.tisyTKtLY693nzcVhzok.08Kei", "2000-12-03", "Vietnam", 1,CURRENT_TIMESTAMP, "http://sc04.alicdn.com/kf/Hc3e61591078043e09dba7808a6be5d21n.jpg", "admin");
 
 CREATE TABLE job (
 	id INT PRIMARY KEY AUTO_INCREMENT,
