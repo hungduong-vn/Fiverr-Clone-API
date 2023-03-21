@@ -3,10 +3,13 @@ const rootRoute = require("./routes/index.route");
 const app = express();
 const PORT = 8080;
 const cors = require("cors");
+const morgan = require("morgan");
 
-app.use(express.json());
-app.use(express.static("."));
 app.use(cors());
+
+app.use(morgan("combined"));
+app.use(express.static("."));
+app.use(express.json());
 
 app.listen(PORT, () => {
   console.log("HELLO WORLD");
