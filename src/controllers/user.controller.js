@@ -1,5 +1,5 @@
 const prisma = require(".");
-const { successCode, errorCode } = require("../utils/responseCode");
+const { successCode, errorCode, failCode } = require("../utils/responseCode");
 
 async function getUsers(req, res) {
   try {
@@ -11,14 +11,40 @@ async function getUsers(req, res) {
   }
 }
 
-async function getUserById(req, res) {
-  const id = +req.params.id;
+async function getUserByName(req, res) {
+  const name = req.params.name;
   try {
-    const data = await prisma.user.findUnique({ where: { id } });
-    successCode(res, data, `User ${id} successfully fetched`);
+    const data = await prisma.user.findFirst({
+      where: { name },
+    });
+    if (!data) {
+      return failCode(res, data, `User ${name} not found`);
+    }
+    delete data.password;
+    return successCode(res, data, `User ${name} successfully fetched`);
   } catch (error) {
     console.log(error);
-    errorCode(res, "Failed");
+    return errorCode(res, `Failed to fetch User ${name}`);
   }
 }
-module.exports = { getUsers, getUserById };
+
+async function updateUser(req, res) {
+  const { data } = req.body;
+  const { jwtPayload } = req;
+  // console.log({ jwtPayload, data });
+  if (!jwtPayload) {
+    return failCode(res, null, "Invalid token");
+  }
+  try {
+    const updateUser = await prisma.user.update({
+      where: { id: jwtPayload.id },
+      data: { ...data },
+    });
+    successCode(res, updateUser, `Updated user ${jwtPayload.name}`);
+  } catch (error) {
+    console.log(error);
+    errorCode(res, `Failed to update user ${jwtPayload.name}`);
+  }
+}
+
+module.exports = { getUsers, getUserByName, updateUser };
