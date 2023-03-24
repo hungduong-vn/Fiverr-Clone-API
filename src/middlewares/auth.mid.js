@@ -66,7 +66,7 @@ function authenticateMdw(req, res, next) {
   validateScheme(res, authScheme);
   try {
     const payload = verifyToken(token);
-    res.jwtPayload = payload;
+    req.jwtPayload = payload;
   } catch (error) {
     console.log(error);
     res.header[
