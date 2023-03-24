@@ -58,4 +58,27 @@ async function signUp(req, res) {
   }
 }
 
-module.exports = { signIn, signUp };
+async function checkUniqueFieldExisted(req, res, identifier) {
+  const value = req.body[identifier];
+  try {
+    const result = await prisma.user.count({ where: { [identifier]: value } });
+    const existed = !!result;
+    return successCode(
+      res,
+      { existed },
+      `User ${identifier} ${value} ${existed ? "" : "not "}existed`
+    );
+  } catch (error) {
+    console.log(error);
+    return errorCode(res, `Failed to check if user ${identifier} existed`);
+  }
+}
+async function checkEmailExisted(req, res) {
+  checkUniqueFieldExisted(req, res, "email");
+}
+
+async function checkUsernameExisted(req, res) {
+  checkUniqueFieldExisted(req, res, "name");
+}
+
+module.exports = { signIn, signUp, checkEmailExisted, checkUsernameExisted };
