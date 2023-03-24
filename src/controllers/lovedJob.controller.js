@@ -42,17 +42,51 @@ async function getLovedJob(req, res) {
   }
 }
 
+async function getLovedJobByUserId(req, res) {
+  const { userId } = req.query;
+  try {
+    const data = await prisma.loved_job.findUnique({
+      where: { user_id: +userId },
+    });
+    return successCode(
+      res,
+      data,
+      `Successfully fetched user ${userId}'s favorite jobs`
+    );
+  } catch (error) {
+    console.log(error);
+    return failCode(
+      res,
+      null,
+      `Failed to fetch user ${userId}'s favorite jobs`
+    );
+  }
+}
+
 async function removeLovedJob(req, res) {
   const { jobId, userId } = req.body;
   try {
     const data = await prisma.loved_job.delete({
       where: { user_id_job_id: { job_id: +jobId, user_id: +userId } },
     });
-    return successCode(res, data, `User ${userId} removed job ${jobId} from their favorite list`)
+    return successCode(
+      res,
+      data,
+      `User ${userId} removed job ${jobId} from their favorite list`
+    );
   } catch (error) {
     console.log(error);
-    return failCode(res, null, `User ${userId} failed to remove job ${jobId} to their favorite list`)
+    return failCode(
+      res,
+      null,
+      `User ${userId} failed to remove job ${jobId} to their favorite list`
+    );
   }
 }
 
-module.exports = { addLovedJob, getLovedJob, removeLovedJob };
+module.exports = {
+  getLovedJob,
+  getLovedJobByUserId,
+  addLovedJob,
+  removeLovedJob,
+};

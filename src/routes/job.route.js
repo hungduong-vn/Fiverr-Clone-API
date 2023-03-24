@@ -4,6 +4,7 @@ const {
   addLovedJob,
   getLovedJob,
   removeLovedJob,
+  getLovedJobByUserId,
 } = require("../controllers/lovedJob.controller");
 const { authenticateMdw } = require("../middlewares/auth.mid");
 const jobRoute = Router();
@@ -14,5 +15,6 @@ jobRoute.get("/get-job-by-id/:id", getJobById);
 jobRoute.post("/add-loved-job", authenticateMdw, addLovedJob);
 jobRoute.delete("/remove-loved-job", authenticateMdw, removeLovedJob);
 jobRoute.get("/get-loved-job", authenticateMdw, getLovedJob);
+jobRoute.get("/get-loved-job-by-user-id", authenticateMdw, getLovedJobByUserId);
 
 module.exports = jobRoute;
