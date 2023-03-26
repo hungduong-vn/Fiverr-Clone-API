@@ -71,21 +71,20 @@ model service {
 }
 
 model job {
-  id                Int         @id @default(autoincrement())
-  user_id           Int?
-  service_id        Int?
-  name              String?     @db.VarChar(255)
-  price             Int?
-  thumb_url         String?     @db.VarChar(3000)
-  long_description  String?     @db.Text
-  short_description String?     @db.Text
-  rating            Int?
-  user              user?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_1")
-  service           service?    @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_2")
-  loved_job         loved_job[]
+  id           Int         @id @default(autoincrement())
+  seller_id    Int?
+  service_id   Int?
+  name         String?     @db.VarChar(255)
+  price        Int?
+  thumb_url    String?     @db.VarChar(3000)
+  review_count Int?
+  rating       Float?      @db.Float
+  user         user?       @relation(fields: [seller_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_1")
+  service      service?    @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "job_ibfk_2")
+  loved_job    loved_job[]
 
   @@index([service_id], map: "service_id")
-  @@index([user_id], map: "user_id")
+  @@index([seller_id], map: "seller_id")
 }
 
 model user {
