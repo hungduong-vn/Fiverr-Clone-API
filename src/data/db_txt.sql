@@ -32,16 +32,16 @@ CREATE TABLE job_subcategory (
 	FOREIGN KEY (job_cat_id) REFERENCES job_category (id));
 INSERT INTO job_subcategory
 		VALUES(
-			0, 1, "Logo & Brand Identity", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004536/Logo%20_%20Brand%20Identity_B_2x.png")
+			0, 1, "Logo & Brand Identity", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004536/Logo%20_%20Brand%20Identity_B_2x.png");
 	INSERT INTO job_subcategory
 		VALUES(
-			0, 1, "Web & App Design", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004528/Web%20_%20App_2x.png")
+			0, 1, "Web & App Design", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/431c7d880582a199f5b240dde2694206-1626594004528/Web%20_%20App_2x.png");
 	INSERT INTO job_subcategory
 		VALUES(
-			0, 1, "Art & Illustration", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/fa22b92aed2d9e4e17b63c7af717aa24-1626178498456/Art%20_Illustration_2x.png")
+			0, 1, "Art & Illustration", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/fa22b92aed2d9e4e17b63c7af717aa24-1626178498456/Art%20_Illustration_2x.png");
 	INSERT INTO job_subcategory
 		VALUES(
-			0, 1, "Marketing Design", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/fa22b92aed2d9e4e17b63c7af717aa24-1626178498477/Social_Media_2x.png")
+			0, 1, "Marketing Design", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/fa22b92aed2d9e4e17b63c7af717aa24-1626178498477/Social_Media_2x.png");
 	INSERT INTO job_subcategory
 		VALUES(
 			0, 1, "Gaming", "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/fa22b92aed2d9e4e17b63c7af717aa24-1626178498464/Gaming_2x.png");
