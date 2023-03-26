@@ -36,6 +36,7 @@ async function updateUser(req, res) {
     return failCode(res, null, "Invalid token");
   }
   try {
+    // TO-DO: Check jwtPayload.id exist in DB
     const updateUser = await prisma.user.update({
       where: { id: jwtPayload.id },
       data: { ...data },
