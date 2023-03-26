@@ -1,5 +1,5 @@
 const prisma = require(".");
-const { failCode, successCode } = require("../utils/responseCode");
+const { failCode, successCode, errorCode } = require("../utils/responseCode");
 
 async function addLovedJob(req, res) {
   const { jobId, userId } = req.body;
@@ -43,10 +43,20 @@ async function getLovedJob(req, res) {
 }
 
 async function getLovedJobByUserId(req, res) {
-  const { userId } = req.query;
+  const { id: userId } = req.params;
   try {
-    const data = await prisma.loved_job.findUnique({
+    let data = await prisma.loved_job.findMany({
       where: { user_id: +userId },
+      include: {
+        job: {
+          include: { user: { select: { name: true, avatar: true } } },
+        },
+      },
+    });
+    data = data.map((lovedJob) => {
+      const { job } = lovedJob;
+      const { user, ...rest } = job;
+      return { seller: user, ...rest };
     });
     return successCode(
       res,

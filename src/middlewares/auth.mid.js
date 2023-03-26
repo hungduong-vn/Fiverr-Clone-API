@@ -4,15 +4,14 @@ const { verifyToken } = require("../utils/token");
 
 function isUserInputEmptyMdw(req, res, next) {
   const { email, password, name } = req.body;
-  if (!name || !email || !password) {
-    failCode(res, null, `Missing required field`);
-    return;
+  const missingIdentifier = !(email || name);
+  if (missingIdentifier || !password) {
+    return failCode(res, null, `Missing required field`);
   }
   for (let field in req.body) {
     const input = req.body[field];
     if (input === null) {
-      failCode(res, null, `Missing required field ${field}`);
-      return;
+      return failCode(res, null, `Missing required field ${field}`);
     }
   }
   next();
@@ -80,9 +79,24 @@ function authenticateMdw(req, res, next) {
   // verifyToken -> payload -> attach to req.body
 }
 
+async function authorizeByUserNameMdw(req, res, next) {
+  const { jwtPayload } = req;
+  const { name } = req.params;
+  console.log({ jwtPayload, name });
+
+  if (jwtPayload.name !== name) {
+    return res.status(403).json({
+      message: `Forbidden access to user ${name}'s privileges`,
+      content: null,
+    });
+  }
+  next();
+}
+
 module.exports = {
   isUserInputEmptyMdw,
   authenticateMdw,
+  authorizeByUserNameMdw,
   validateSignUp,
   validateSignIn,
 };

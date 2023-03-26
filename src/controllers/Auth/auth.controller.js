@@ -39,6 +39,7 @@ async function signIn(req, res) {
 
 async function signUp(req, res) {
   const { ...userInfo } = req.body;
+  // console.log({ userInfo });
   try {
     const encryptedPassword = encryptString(userInfo.password);
     const newUser = {
@@ -49,7 +50,7 @@ async function signUp(req, res) {
     };
     let data = await prisma.user.create({ data: { ...newUser } });
     delete data.password;
-    const token = generateToken(data);
+    const token = generateToken({ id: data.id, name: data.name });
     data = { ...data, accessToken: token };
     successCode(res, data, "Signed up successfully!");
   } catch (error) {
@@ -81,4 +82,9 @@ async function checkUsernameExisted(req, res) {
   checkUniqueFieldExisted(req, res, "name");
 }
 
-module.exports = { signIn, signUp, checkEmailExisted, checkUsernameExisted };
+module.exports = {
+  signIn,
+  signUp,
+  checkEmailExisted,
+  checkUsernameExisted,
+};
