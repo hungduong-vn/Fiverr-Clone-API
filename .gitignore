@@ -27,3 +27,6 @@ yarn-error.log*
 
 # mysql data
 *sql
+
+# SSL Keys
+*.pem
