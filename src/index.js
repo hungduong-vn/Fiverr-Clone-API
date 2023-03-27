@@ -1,5 +1,3 @@
-const fs = require("fs");
-const https = require("https");
 const express = require("express");
 const rootRoute = require("./routes/index.route");
 const app = express();
@@ -22,14 +20,6 @@ app.get("/test", (req, res) => {
 // });
 
 app.use("/api", rootRoute);
-https
-  .createServer(
-    {
-      key: fs.readFileSync("key.pem"),
-      cert: fs.readFileSync("cert.pem"),
-    },
-    app
-  )
-  .listen(PORT, () => {
-    console.log("HELLO WORLD");
-  });
+app.listen(PORT, () => {
+  console.log("HELLO WORLD");
+});
