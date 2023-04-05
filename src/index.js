@@ -1,10 +1,12 @@
 const express = require("express");
+const helmet = require("helmet");
 const rootRoute = require("./routes/index.route");
 const app = express();
 const PORT = 8080;
 const cors = require("cors");
 const morgan = require("morgan");
 
+app.use(helmet());
 app.use(cors());
 
 app.use(morgan("combined"));
